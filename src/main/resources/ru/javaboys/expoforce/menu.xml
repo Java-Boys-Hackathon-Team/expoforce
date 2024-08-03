@@ -4,6 +4,8 @@
     <menu id="application" title="msg://ru.javaboys.expoforce/menu.application.title" opened="true">
         <item view="User.list" title="msg://ru.javaboys.expoforce.view.user/UserListView.title"/>
         <item view="Source.list" title="msg://ru.javaboys.expoforce.view.source/sourceListView.title"/>
+        <item view="Client.list" title="msg://ru.javaboys.expoforce.view.client/clientListView.title"/>
+        <item view="Product.list" title="msg://ru.javaboys.expoforce.view.product/productListView.title"/>
     </menu>
 
 </menu-config>
