@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="expoforce">
+        <createTable tableName="PRODUCT_PROPERTY">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_PRODUCT_PROPERTY"/>
+            </column>
+            <column name="PARAM" type="CLOB"/>
+            <column name="VAL" type="CLOB"/>
+            <column name="PRODUCT_ID" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="2" author="expoforce">
+        <createIndex indexName="IDX_PRODUCT_PROPERTY_PRODUCT" tableName="PRODUCT_PROPERTY">
+            <column name="PRODUCT_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="PRODUCT_ID" baseTableName="PRODUCT_PROPERTY"
+                                 constraintName="FK_PRODUCT_PROPERTY_ON_PRODUCT" referencedColumnNames="ID"
+                                 referencedTableName="PRODUCT"/>
+    </changeSet>
+</databaseChangeLog>

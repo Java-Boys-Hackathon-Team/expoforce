@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      xmlns:c="http://jmix.io/schema/flowui/jpql-condition"
+      title="msg://productPropertyListView.title"
+      focusComponent="productPropertiesDataGrid">
+    <data>
+        <collection id="productPropertiesDc"
+                    class="ru.javaboys.expoforce.entity.ProductProperty">
+            <fetchPlan extends="_base">
+                <property name="product" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader id="productPropertiesDl" readOnly="true">
+                <query>
+                    <![CDATA[select e from ProductProperty e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <urlQueryParameters>
+            <genericFilter component="genericFilter"/>
+            <pagination component="pagination"/>
+        </urlQueryParameters>
+    </facets>
+    <actions>
+        <action id="selectAction" type="lookup_select"/>
+        <action id="discardAction" type="lookup_discard"/>
+    </actions>
+    <layout>
+        <genericFilter id="genericFilter"
+                       dataLoader="productPropertiesDl">
+            <properties include=".*"/>
+        </genericFilter>
+        <hbox id="buttonsPanel" classNames="buttons-panel">
+            <button id="createBtn" action="productPropertiesDataGrid.create"/>
+            <button id="editBtn" action="productPropertiesDataGrid.edit"/>
+            <button id="removeBtn" action="productPropertiesDataGrid.remove"/>
+            <simplePagination id="pagination" dataLoader="productPropertiesDl"/>
+        </hbox>
+        <dataGrid id="productPropertiesDataGrid"
+                  width="100%"
+                  minHeight="20em"
+                  dataContainer="productPropertiesDc"
+                  columnReorderingAllowed="true">
+            <actions>
+                <action id="create" type="list_create"/>
+                <action id="edit" type="list_edit"/>
+                <action id="remove" type="list_remove"/>
+            </actions>
+            <columns resizable="true">
+                <column property="param"/>
+                <column property="val"/>
+                <column property="product"/>
+            </columns>
+        </dataGrid>
+        <hbox id="lookupActions" visible="false">
+            <button id="selectBtn" action="selectAction"/>
+            <button id="discardBtn" action="discardAction"/>
+        </hbox>
+    </layout>
+</view>

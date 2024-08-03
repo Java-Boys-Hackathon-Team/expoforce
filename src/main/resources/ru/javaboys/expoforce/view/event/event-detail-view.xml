@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      title="msg://eventDetailView.title"
+      focusComponent="form">
+    <data>
+        <instance id="eventDc"
+                  class="ru.javaboys.expoforce.entity.Event">
+            <fetchPlan extends="_base">
+                <property name="source" fetchPlan="_base"/>
+                <property name="client" fetchPlan="_base"/>
+                <property name="product" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader id="eventDl"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+    </facets>
+    <actions>
+        <action id="saveAction" type="detail_saveClose"/>
+        <action id="closeAction" type="detail_close"/>
+    </actions>
+    <layout>
+        <formLayout id="form" dataContainer="eventDc">
+            <select id="evTypeField" property="evType"/>
+            <dateTimePicker id="evDateField" property="evDate"/>
+            <entityPicker id="sourceField" property="source">
+                <actions>
+                    <action id="entityLookup" type="entity_lookup"/>
+                    <action id="entityClear" type="entity_clear"/>
+                </actions>
+            </entityPicker>
+            <entityPicker id="clientField" property="client">
+                <actions>
+                    <action id="entityLookup" type="entity_lookup"/>
+                    <action id="entityClear" type="entity_clear"/>
+                </actions>
+            </entityPicker>
+            <entityPicker id="productField" property="product">
+                <actions>
+                    <action id="entityLookup" type="entity_lookup"/>
+                    <action id="entityClear" type="entity_clear"/>
+                </actions>
+            </entityPicker>
+        </formLayout>
+        <hbox id="detailActions">
+            <button id="saveAndCloseBtn" action="saveAction"/>
+            <button id="closeBtn" action="closeAction"/>
+        </hbox>
+    </layout>
+</view>
