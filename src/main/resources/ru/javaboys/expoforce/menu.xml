@@ -5,11 +5,7 @@
         <item view="User.list" title="msg://ru.javaboys.expoforce.view.user/UserListView.title"/>
         <item view="Source.list" title="msg://ru.javaboys.expoforce.view.source/sourceListView.title"/>
         <item view="Client.list" title="msg://ru.javaboys.expoforce.view.client/clientListView.title"/>
-        <item view="ClientProperty.list"
-              title="msg://ru.javaboys.expoforce.view.clientproperty/clientPropertyListView.title"/>
         <item view="Product.list" title="msg://ru.javaboys.expoforce.view.product/productListView.title"/>
-        <item view="ProductProperty.list"
-              title="msg://ru.javaboys.expoforce.view.productproperty/productPropertyListView.title"/>
         <item view="Event.list" title="msg://ru.javaboys.expoforce.view.event/eventListView.title"/>
     </menu>
 </menu-config>
