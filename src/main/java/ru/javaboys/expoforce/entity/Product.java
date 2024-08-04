@@ -7,6 +7,7 @@ import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
@@ -20,6 +21,19 @@ public class Product {
     @Column(name = "ID", nullable = false)
     @Id
     private UUID id;
+
+    @Column(name = "DESCRIPTION")
+    @Lob
+    private String description;
+
+    @Column(name = "PRICE", precision = 19, scale = 2)
+    private BigDecimal price;
+
+    @Column(name = "PRODUCT_TYPE")
+    private String productType;
+
+    @Column(name = "OFFER_ON_CREDIT")
+    private Boolean offerOnCredit;
 
     @Column(name = "CODE", length = 20)
     private String code;
@@ -39,6 +53,38 @@ public class Product {
     @DeletedDate
     @Column(name = "DELETED_DATE")
     private OffsetDateTime deletedDate;
+
+    public Boolean getOfferOnCredit() {
+        return offerOnCredit;
+    }
+
+    public void setOfferOnCredit(Boolean offerOnCredit) {
+        this.offerOnCredit = offerOnCredit;
+    }
+
+    public ProductType getProductType() {
+        return productType == null ? null : ProductType.fromId(productType);
+    }
+
+    public void setProductType(ProductType productType) {
+        this.productType = productType == null ? null : productType.getId();
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public Source getSource() {
         return source;
