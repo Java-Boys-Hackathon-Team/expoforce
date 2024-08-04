@@ -22,12 +22,16 @@
         <formLayout id="form" dataContainer="productDc">
             <textField id="codeField" property="code"/>
             <textField id="nameField" property="name"/>
+            <select id="productTypeField" property="productType"/>
             <entityPicker id="sourceField" property="source">
                 <actions>
                     <action id="entityLookup" type="entity_lookup"/>
                     <action id="entityClear" type="entity_clear"/>
                 </actions>
             </entityPicker>
+            <textField id="priceField" property="price"/>
+            <checkbox id="offerOnCreditField" property="offerOnCredit"/>
+            <textArea id="descriptionField" height="9.5em" property="description"/>
         </formLayout>
         <hbox id="detailActions">
             <button id="saveAndCloseBtn" action="saveAction"/>
