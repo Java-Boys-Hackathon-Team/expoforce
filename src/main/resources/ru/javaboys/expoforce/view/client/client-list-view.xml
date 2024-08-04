@@ -47,6 +47,7 @@
                 <action id="remove" type="list_remove"/>
             </actions>
             <columns resizable="true">
+                <column property="passportNumber"/>
                 <column property="name"/>
                 <column property="surname"/>
             </columns>

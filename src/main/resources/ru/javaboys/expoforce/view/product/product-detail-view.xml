@@ -5,7 +5,9 @@
     <data>
         <instance id="productDc"
                   class="ru.javaboys.expoforce.entity.Product">
-            <fetchPlan extends="_base"/>
+            <fetchPlan extends="_base">
+                <property name="source" fetchPlan="_base"/>
+            </fetchPlan>
             <loader id="productDl"/>
         </instance>
     </data>
@@ -18,7 +20,14 @@
     </actions>
     <layout>
         <formLayout id="form" dataContainer="productDc">
+            <textField id="codeField" property="code"/>
             <textField id="nameField" property="name"/>
+            <entityPicker id="sourceField" property="source">
+                <actions>
+                    <action id="entityLookup" type="entity_lookup"/>
+                    <action id="entityClear" type="entity_clear"/>
+                </actions>
+            </entityPicker>
         </formLayout>
         <hbox id="detailActions">
             <button id="saveAndCloseBtn" action="saveAction"/>
