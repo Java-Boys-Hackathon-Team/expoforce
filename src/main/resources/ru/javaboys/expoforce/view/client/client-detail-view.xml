@@ -18,8 +18,13 @@
     </actions>
     <layout>
         <formLayout id="form" dataContainer="clientDc">
-            <textField id="nameField" property="name"/>
             <textField id="surnameField" property="surname"/>
+            <textField id="nameField" property="name"/>
+            <textField id="middleNameField" property="middleName"/>
+            <textField id="phoneField" property="phone"/>
+            <textField id="emailField" property="email"/>
+            <textField id="passportNumberField" property="passportNumber"/>
+            <textField id="driverLicenseNumberField" property="driverLicenseNumber"/>
         </formLayout>
         <hbox id="detailActions">
             <button id="saveAndCloseBtn" action="saveAction"/>

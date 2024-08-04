@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="expoforce">
+        <addColumn tableName="PRODUCT">
+            <column name="CODE" type="VARCHAR(20)"/>
+            <column name="SOURCE_ID" type="UUID"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="2" author="expoforce">
+        <createIndex indexName="IDX_PRODUCT_SOURCE" tableName="PRODUCT">
+            <column name="SOURCE_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="SOURCE_ID" baseTableName="PRODUCT"
+                                 constraintName="FK_PRODUCT_ON_SOURCE" referencedColumnNames="ID"
+                                 referencedTableName="SOURCE"/>
+    </changeSet>
+</databaseChangeLog>

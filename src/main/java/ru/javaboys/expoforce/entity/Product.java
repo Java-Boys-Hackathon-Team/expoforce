@@ -5,22 +5,28 @@ import io.jmix.core.annotation.DeletedDate;
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
 import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @JmixEntity
-@Table(name = "PRODUCT")
+@Table(name = "PRODUCT", indexes = {
+        @Index(name = "IDX_PRODUCT_SOURCE", columnList = "SOURCE_ID")
+})
 @Entity
 public class Product {
     @JmixGeneratedValue
     @Column(name = "ID", nullable = false)
     @Id
     private UUID id;
+
+    @Column(name = "CODE", length = 20)
+    private String code;
+
+    @JoinColumn(name = "SOURCE_ID")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Source source;
 
     @InstanceName
     @Column(name = "NAME")
@@ -33,6 +39,22 @@ public class Product {
     @DeletedDate
     @Column(name = "DELETED_DATE")
     private OffsetDateTime deletedDate;
+
+    public Source getSource() {
+        return source;
+    }
+
+    public void setSource(Source source) {
+        this.source = source;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
 
     public String getName() {
         return name;

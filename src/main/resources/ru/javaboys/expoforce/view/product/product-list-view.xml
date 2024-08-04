@@ -6,7 +6,9 @@
     <data>
         <collection id="productsDc"
                     class="ru.javaboys.expoforce.entity.Product">
-            <fetchPlan extends="_base"/>
+            <fetchPlan extends="_base">
+                <property name="source" fetchPlan="_base"/>
+            </fetchPlan>
             <loader id="productsDl" readOnly="true">
                 <query>
                     <![CDATA[select e from Product e]]>
@@ -47,7 +49,9 @@
                 <action id="remove" type="list_remove"/>
             </actions>
             <columns resizable="true">
+                <column property="code"/>
                 <column property="name"/>
+                <column property="source"/>
             </columns>
         </dataGrid>
         <hbox id="lookupActions" visible="false">
