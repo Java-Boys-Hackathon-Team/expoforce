@@ -18,13 +18,27 @@
     </actions>
     <layout>
         <formLayout id="form" dataContainer="clientDc">
-            <textField id="surnameField" property="surname"/>
+            <select id="genderField" property="gender"/>
+            <textField id="ageField" property="age"/>
+            <select id="educationField" property="education"/>
+            <textField id="cityOfResidenceField" property="cityOfResidence"/>
+            <textField id="positionField" property="position"/>
+            <checkbox id="haveForeignPassportField" property="haveForeignPassport"/>
+            <checkbox id="haveDriverLicenseField" property="haveDriverLicense"/>
+            <textField id="seniorityField" property="seniority"/>
+            <textField id="incomeAmountField" property="incomeAmount"/>
+            <select id="employmentTypeField" property="employmentType"/>
+            <checkbox id="marriedField" property="married"/>
+            <textField id="amountOfChildrenField" property="amountOfChildren"/>
+            <checkbox id="haveOwnHomeField" property="haveOwnHome"/>
+            <textField id="workOrganizationField" property="workOrganization"/>
             <textField id="nameField" property="name"/>
             <textField id="middleNameField" property="middleName"/>
             <textField id="phoneField" property="phone"/>
             <textField id="emailField" property="email"/>
             <textField id="passportNumberField" property="passportNumber"/>
             <textField id="driverLicenseNumberField" property="driverLicenseNumber"/>
+            <textField id="surnameField" property="surname"/>
         </formLayout>
         <hbox id="detailActions">
             <button id="saveAndCloseBtn" action="saveAction"/>
