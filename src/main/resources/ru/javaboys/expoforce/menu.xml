@@ -6,6 +6,7 @@
         <item view="Source.list" title="msg://ru.javaboys.expoforce.view.source/sourceListView.title"/>
         <item view="Client.list" title="msg://ru.javaboys.expoforce.view.client/clientListView.title"/>
         <item view="Product.list" title="msg://ru.javaboys.expoforce.view.product/productListView.title"/>
+        <item view="TouchPoints.list" title="msg://ru.javaboys.expoforce.view.touchpoints/touchPointsListView.title"/>
         <item view="Event.list" title="msg://ru.javaboys.expoforce.view.event/eventListView.title"/>
     </menu>
 </menu-config>

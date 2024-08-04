@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      xmlns:c="http://jmix.io/schema/flowui/jpql-condition"
+      title="msg://touchPointsListView.title"
+      focusComponent="touchPointsesDataGrid">
+    <data>
+        <collection id="touchPointsesDc"
+                    class="ru.javaboys.expoforce.entity.TouchPoints">
+            <fetchPlan extends="_base">
+                <property name="client" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader id="touchPointsesDl" readOnly="true">
+                <query>
+                    <![CDATA[select e from TouchPoints e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <urlQueryParameters>
+            <genericFilter component="genericFilter"/>
+            <pagination component="pagination"/>
+        </urlQueryParameters>
+    </facets>
+    <actions>
+        <action id="selectAction" type="lookup_select"/>
+        <action id="discardAction" type="lookup_discard"/>
+    </actions>
+    <layout>
+        <genericFilter id="genericFilter"
+                       dataLoader="touchPointsesDl">
+            <properties include=".*"/>
+        </genericFilter>
+        <hbox id="buttonsPanel" classNames="buttons-panel">
+            <button id="createBtn" action="touchPointsesDataGrid.create"/>
+            <button id="editBtn" action="touchPointsesDataGrid.edit"/>
+            <button id="removeBtn" action="touchPointsesDataGrid.remove"/>
+            <simplePagination id="pagination" dataLoader="touchPointsesDl"/>
+        </hbox>
+        <dataGrid id="touchPointsesDataGrid"
+                  width="100%"
+                  minHeight="20em"
+                  dataContainer="touchPointsesDc"
+                  columnReorderingAllowed="true">
+            <actions>
+                <action id="create" type="list_create"/>
+                <action id="edit" type="list_edit"/>
+                <action id="remove" type="list_remove"/>
+            </actions>
+            <columns resizable="true">
+                <column property="client"/>
+                <column property="cost"/>
+                <column property="interacted"/>
+                <column property="purchased"/>
+                <column property="productType"/>
+            </columns>
+        </dataGrid>
+        <hbox id="lookupActions" visible="false">
+            <button id="selectBtn" action="selectAction"/>
+            <button id="discardBtn" action="discardAction"/>
+        </hbox>
+    </layout>
+</view>
