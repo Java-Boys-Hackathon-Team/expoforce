@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      title="msg://advertisingCampaignDetailView.title"
+      focusComponent="form">
+    <data>
+        <instance id="advertisingCampaignDc"
+                  class="ru.javaboys.expoforce.entity.AdvertisingCampaign">
+            <fetchPlan extends="_base">
+                <property name="filters" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader/>
+            <collection id="filtersDc" property="filters"/>
+        </instance>
+    </data>
+    <facets>
+        <urlQueryParameters id="urlQueryParameters"/>
+        <dataLoadCoordinator auto="true"/>
+    </facets>
+    <actions>
+        <action id="saveAction" type="detail_saveClose"/>
+        <action id="closeAction" type="detail_close"/>
+    </actions>
+    <layout>
+        <formLayout id="form" dataContainer="advertisingCampaignDc">
+            <textField id="nameField" property="name"/>
+            <textArea id="descriptionField" height="9.5em" property="description"/>
+            <div>
+                <hbox id="filtersButtonsPanel" classNames="buttons-panel">
+                    <button action="filtersDataGrid.add"/>
+                    <button action="filtersDataGrid.exclude"/>
+                </hbox>
+                <dataGrid id="filtersDataGrid"
+                          dataContainer="filtersDc"
+                          selectionMode="MULTI">
+                    <actions>
+                        <action id="add" type="list_add"/>
+                        <action id="exclude" type="list_exclude"/>
+                    </actions>
+                    <columns>
+                        <column property="field"/>
+                        <column property="condition"/>
+                        <column property="value1"/>
+                        <column property="value2"/>
+                    </columns>
+                </dataGrid>
+            </div>
+        </formLayout>
+        <hbox id="detailActions">
+            <button id="saveAndCloseBtn" action="saveAction"/>
+            <button id="closeBtn" action="closeAction"/>
+        </hbox>
+    </layout>
+</view>
