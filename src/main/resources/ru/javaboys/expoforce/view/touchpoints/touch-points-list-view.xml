@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <view xmlns="http://jmix.io/schema/flowui/view"
       xmlns:c="http://jmix.io/schema/flowui/jpql-condition"
-      title="msg://productPropertyListView.title"
-      focusComponent="productPropertiesDataGrid">
+      title="msg://touchPointsListView.title"
+      focusComponent="touchPointsesDataGrid">
     <data>
-        <collection id="productPropertiesDc"
-                    class="ru.javaboys.expoforce.entity.ProductProperty">
+        <collection id="touchPointsesDc"
+                    class="ru.javaboys.expoforce.entity.TouchPoints">
             <fetchPlan extends="_base">
-                <property name="product" fetchPlan="_base"/>
+                <property name="client" fetchPlan="_base"/>
             </fetchPlan>
-            <loader id="productPropertiesDl" readOnly="true">
+            <loader id="touchPointsesDl" readOnly="true">
                 <query>
-                    <![CDATA[select e from ProductProperty e]]>
+                    <![CDATA[select e from TouchPoints e]]>
                 </query>
             </loader>
         </collection>
@@ -29,19 +29,19 @@
     </actions>
     <layout>
         <genericFilter id="genericFilter"
-                       dataLoader="productPropertiesDl">
+                       dataLoader="touchPointsesDl">
             <properties include=".*"/>
         </genericFilter>
         <hbox id="buttonsPanel" classNames="buttons-panel">
-            <button id="createBtn" action="productPropertiesDataGrid.create"/>
-            <button id="editBtn" action="productPropertiesDataGrid.edit"/>
-            <button id="removeBtn" action="productPropertiesDataGrid.remove"/>
-            <simplePagination id="pagination" dataLoader="productPropertiesDl"/>
+            <button id="createBtn" action="touchPointsesDataGrid.create"/>
+            <button id="editBtn" action="touchPointsesDataGrid.edit"/>
+            <button id="removeBtn" action="touchPointsesDataGrid.remove"/>
+            <simplePagination id="pagination" dataLoader="touchPointsesDl"/>
         </hbox>
-        <dataGrid id="productPropertiesDataGrid"
+        <dataGrid id="touchPointsesDataGrid"
                   width="100%"
                   minHeight="20em"
-                  dataContainer="productPropertiesDc"
+                  dataContainer="touchPointsesDc"
                   columnReorderingAllowed="true">
             <actions>
                 <action id="create" type="list_create"/>
@@ -49,9 +49,11 @@
                 <action id="remove" type="list_remove"/>
             </actions>
             <columns resizable="true">
-                <column property="param"/>
-                <column property="val"/>
-                <column property="product"/>
+                <column property="client"/>
+                <column property="cost"/>
+                <column property="interacted"/>
+                <column property="purchased"/>
+                <column property="productType"/>
             </columns>
         </dataGrid>
         <hbox id="lookupActions" visible="false">

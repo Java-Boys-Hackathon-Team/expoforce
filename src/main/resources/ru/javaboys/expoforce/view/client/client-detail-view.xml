@@ -23,8 +23,23 @@
             <textField id="middleNameField" property="middleName"/>
             <textField id="phoneField" property="phone"/>
             <textField id="emailField" property="email"/>
-            <textField id="passportNumberField" property="passportNumber"/>
+            <select id="genderField" property="gender">
+            </select>
+            <textField id="ageField" property="age"/>
+            <select id="educationField" property="education"/>
+            <textField id="cityOfResidenceField" property="cityOfResidence"/>
+            <textField id="positionField" property="position"/>
             <textField id="driverLicenseNumberField" property="driverLicenseNumber"/>
+            <textField id="passportNumberField" property="passportNumber"/>
+            <textField id="seniorityField" property="seniority"/>
+            <textField id="incomeAmountField" property="incomeAmount"/>
+            <select id="employmentTypeField" property="employmentType"/>
+            <textField id="amountOfChildrenField" property="amountOfChildren"/>
+            <textField id="workOrganizationField" property="workOrganization"/>
+            <checkbox id="haveForeignPassportField" property="haveForeignPassport"/>
+            <checkbox id="haveDriverLicenseField" property="haveDriverLicense"/>
+            <checkbox id="haveOwnHomeField" property="haveOwnHome"/>
+            <checkbox id="marriedField" property="married"/>
         </formLayout>
         <hbox id="detailActions">
             <button id="saveAndCloseBtn" action="saveAction"/>
