@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      xmlns:c="http://jmix.io/schema/flowui/jpql-condition"
+      title="msg://advertisingCampaignRunListView.title"
+      focusComponent="advertisingCampaignRunsDataGrid">
+    <data>
+        <collection id="advertisingCampaignRunsDc"
+                    class="ru.javaboys.expoforce.entity.AdvertisingCampaignRun">
+            <fetchPlan extends="_base">
+                <property name="campaign" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader id="advertisingCampaignRunsDl" readOnly="true">
+                <query>
+                    <![CDATA[select e from AdvertisingCampaignRun e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <urlQueryParameters>
+            <genericFilter component="genericFilter"/>
+            <pagination component="pagination"/>
+        </urlQueryParameters>
+    </facets>
+    <actions>
+        <action id="selectAction" type="lookup_select"/>
+        <action id="discardAction" type="lookup_discard"/>
+    </actions>
+    <layout>
+        <genericFilter id="genericFilter"
+                       dataLoader="advertisingCampaignRunsDl">
+            <properties include=".*"/>
+        </genericFilter>
+        <hbox id="buttonsPanel" classNames="buttons-panel">
+            <button id="createBtn" action="advertisingCampaignRunsDataGrid.create"/>
+            <button id="editBtn" action="advertisingCampaignRunsDataGrid.edit"/>
+            <button id="removeBtn" action="advertisingCampaignRunsDataGrid.remove"/>
+            <simplePagination id="pagination" dataLoader="advertisingCampaignRunsDl"/>
+        </hbox>
+        <dataGrid id="advertisingCampaignRunsDataGrid"
+                  width="100%"
+                  minHeight="20em"
+                  dataContainer="advertisingCampaignRunsDc"
+                  columnReorderingAllowed="true">
+            <actions>
+                <action id="create" type="list_create"/>
+                <action id="edit" type="list_edit"/>
+                <action id="remove" type="list_remove"/>
+            </actions>
+            <columns resizable="true">
+                <column property="runTimestamp"/>
+                <column property="campaign.name"/>
+            </columns>
+        </dataGrid>
+        <hbox id="lookupActions" visible="false">
+            <button id="selectBtn" action="selectAction"/>
+            <button id="discardBtn" action="discardAction"/>
+        </hbox>
+    </layout>
+</view>

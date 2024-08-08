@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      title="msg://advertisingCampaignFilterDetailView.title"
+      focusComponent="form">
+    <data>
+        <instance id="advertisingCampaignFilterDc"
+                  class="ru.javaboys.expoforce.entity.AdvertisingCampaignFilter">
+            <fetchPlan extends="_base"/>
+            <loader id="advertisingCampaignFilterDl"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+    </facets>
+    <actions>
+        <action id="saveAction" type="detail_saveClose"/>
+        <action id="closeAction" type="detail_close"/>
+    </actions>
+    <layout>
+        <formLayout id="form" dataContainer="advertisingCampaignFilterDc">
+            <select id="fieldField" property="field"/>
+            <select id="conditionField" property="condition"/>
+            <textField id="value1Field" property="value1"/>
+            <textField id="value2Field" property="value2"/>
+        </formLayout>
+        <hbox id="detailActions">
+            <button id="saveAndCloseBtn" action="saveAction"/>
+            <button id="closeBtn" action="closeAction"/>
+        </hbox>
+    </layout>
+</view>

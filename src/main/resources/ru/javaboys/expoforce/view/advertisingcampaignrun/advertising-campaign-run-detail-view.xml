@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      title="msg://advertisingCampaignRunDetailView.title"
+      focusComponent="form">
+    <data>
+        <instance id="advertisingCampaignRunDc"
+                  class="ru.javaboys.expoforce.entity.AdvertisingCampaignRun">
+            <fetchPlan extends="_base">
+                <property name="campaign" fetchPlan="_base"/>
+                <property name="clients" fetchPlan="_base"/>
+                <property name="product" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader id="advertisingCampaignRunDl"/>
+            <collection id="clientsDc" property="clients"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+    </facets>
+    <actions>
+        <action id="closeAction" type="detail_close"/>
+    </actions>
+    <layout>
+        <formLayout id="form" dataContainer="advertisingCampaignRunDc">
+            <textField label="Фильтр кампании" property="campaign.name" enabled="false"/>
+            <entityPicker id="productField" property="product">
+                <actions>
+                    <action id="entityLookup" type="entity_lookup"/>
+                    <action id="entityClear" type="entity_clear"/>
+                </actions>
+            </entityPicker>
+        </formLayout>
+        <div>
+            <button text="Отправить коммерческое предложение"/>
+        </div>
+        <dataGrid id="clientsDataGrid" dataContainer="clientsDc"
+                  width="100%" minHeight="20em" selectionMode="MULTI">
+            <columns>
+                <column property="client.name"/>
+                <column property="client.surname"/>
+                <column property="sentEmail"/>
+                <column property="wasCalled"/>
+            </columns>
+        </dataGrid>
+        <hbox id="detailActions">
+            <button id="closeBtn" action="closeAction"/>
+        </hbox>
+    </layout>
+</view>

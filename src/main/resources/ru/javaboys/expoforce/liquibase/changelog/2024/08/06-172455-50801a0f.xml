@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="expoforce">
+        <createTable tableName="ADVERTISING_CAMPAIGN">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_ADVERTISING_CAMPAIGN"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="DESCRIPTION" type="CLOB"/>
+            <column name="DELETED_BY" type="VARCHAR(255)"/>
+            <column name="DELETED_DATE" type="${offsetDateTime.type}"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="2" author="expoforce">
+        <createTable tableName="ADVERTISING_CAMPAIGN_FILTER">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_ADVERTISING_CAMPAIGN_FILTER"/>
+            </column>
+            <column name="FIELD_NAME" type="VARCHAR(255)"/>
+            <column name="CONDITION_" type="VARCHAR(255)"/>
+            <column name="VALUE1" type="VARCHAR(255)"/>
+            <column name="VALUE2" type="VARCHAR(255)"/>
+            <column name="DELETED_BY" type="VARCHAR(255)"/>
+            <column name="DELETED_DATE" type="${offsetDateTime.type}"/>
+            <column name="ADVERTISING_CAMPAIGN_ID" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="3" author="expoforce">
+        <createIndex indexName="IDX_ADVERTISING_CAMPAIGN_FILTER_ADVERTISING_CAMPAIGN"
+                     tableName="ADVERTISING_CAMPAIGN_FILTER">
+            <column name="ADVERTISING_CAMPAIGN_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="ADVERTISING_CAMPAIGN_ID" baseTableName="ADVERTISING_CAMPAIGN_FILTER"
+                                 constraintName="FK_ADVERTISING_CAMPAIGN_FILTER_ON_ADVERTISING_CAMPAIGN"
+                                 referencedColumnNames="ID" referencedTableName="ADVERTISING_CAMPAIGN"/>
+    </changeSet>
+</databaseChangeLog>
