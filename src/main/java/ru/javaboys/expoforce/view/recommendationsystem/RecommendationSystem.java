@@ -9,6 +9,7 @@ import io.jmix.flowui.view.Subscribe;
 import io.jmix.flowui.view.ViewController;
 import io.jmix.flowui.view.ViewDescriptor;
 import org.springframework.beans.factory.annotation.Autowired;
+import ru.javaboys.expoforce.controller.RecommendationController;
 import ru.javaboys.expoforce.view.main.MainView;
 
 @Route(value = "recommendation_system", layout = MainView.class)
