@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      title="msg://dataImport.title">
+    <layout>
+        <button id="importExcel" text="Импортировать Excel"/>
+        <button id="importCSV" text="Импортировать CSV"/>
+    </layout>
+</view>
