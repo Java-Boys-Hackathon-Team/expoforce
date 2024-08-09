@@ -2,6 +2,6 @@
 <view xmlns="http://jmix.io/schema/flowui/view"
       title="msg://recommendationSystem.title">
     <layout>
-        <button id="button" text="training"/>
+        <button id="button" text="Запустить обучение"/>
     </layout>
 </view>
