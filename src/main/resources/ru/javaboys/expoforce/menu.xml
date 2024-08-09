@@ -8,6 +8,10 @@
         <item view="Product.list" title="msg://ru.javaboys.expoforce.view.product/productListView.title"/>
         <item view="TouchPoints.list" title="msg://ru.javaboys.expoforce.view.touchpoints/touchPointsListView.title"/>
         <item view="Event.list" title="msg://ru.javaboys.expoforce.view.event/eventListView.title"/>
+        <item view="AdvertisingCampaign.list"
+              title="msg://ru.javaboys.expoforce.view.advertisingcampaign/advertisingCampaignListView.title"/>
+        <item view="AdvertisingCampaignRun.list"
+              title="msg://ru.javaboys.expoforce.view.advertisingcampaignrun/advertisingCampaignRunListView.title"/>
         <item view="RecommendationSystem"
               title="msg://ru.javaboys.expoforce.view.recommendationsystem/recommendationSystem.title"/>
     </menu>
