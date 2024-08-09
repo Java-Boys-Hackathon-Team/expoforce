@@ -12,5 +12,7 @@
               title="msg://ru.javaboys.expoforce.view.advertisingcampaign/advertisingCampaignListView.title"/>
         <item view="AdvertisingCampaignRun.list"
               title="msg://ru.javaboys.expoforce.view.advertisingcampaignrun/advertisingCampaignRunListView.title"/>
+        <item view="RecommendationSystem"
+              title="msg://ru.javaboys.expoforce.view.recommendationsystem/recommendationSystem.title"/>
     </menu>
 </menu-config>

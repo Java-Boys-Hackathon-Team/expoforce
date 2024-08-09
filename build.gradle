@@ -51,6 +51,11 @@ dependencies {
     implementation 'org.apache.poi:poi:5.2.2'
     implementation 'org.apache.poi:poi-ooxml:5.2.2'
 
+    dependencies {
+        implementation(files("lib/weka.jar"))
+    }
+    implementation 'nz.ac.waikato.cms.weka:weka-stable:3.8.6'
+
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
@@ -63,4 +68,8 @@ test {
 
 vaadin {
     optimizeBundle = false
+}
+
+tasks.withType(JavaExec) {
+    jvmArgs = ['--add-opens', 'java.base/java.lang=ALL-UNNAMED']
 }
