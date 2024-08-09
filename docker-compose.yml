@@ -18,7 +18,6 @@ services:
     tty: true
     depends_on:
       - db
-#      - minio
 
   db:
     image: postgres:latest
@@ -49,26 +48,7 @@ services:
     depends_on:
       - db
 
-
-  # MinIO Console http://localhost:29001/
-#  minio:
-#    image: bitnami/minio
-#    container_name: minio
-#    ports:
-#      - "29002:9000"
-#      - "29003:9001"
-#    restart: always
-#    volumes:
-#      - minio_data_volume:/bitnami/minio/data
-#    environment:
-#      MINIO_ROOT_USER: minioadmin
-#      MINIO_ROOT_PASSWORD: minioadmin
-#      MINIO_REGION_NAME: ru-mos
-#      MINIO_DEFAULT_BUCKETS: 'files,public:public'
-
 volumes:
   postgres_data:
   pgadmin_data:
     driver: local
-#  minio_data_volume:
-#    driver: local
