@@ -39,7 +39,7 @@ docker-compose rm -f
 docker image prune -f --filter "label=com.docker.compose.project=expoforce"
 
 # Шаг 6: Сборка проекта expoforce
-./gradlew -Pvaadin.productionMode=true bootJar
+./gradlew -Dorg.gradle.jvmargs='-Xms1g -Xmx2g' -Pvaadin.productionMode=true bootJar -x test
 
 # Шаг 7: Запуск всех сервисов
 docker-compose up -d

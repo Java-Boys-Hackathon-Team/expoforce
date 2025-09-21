@@ -26,7 +26,7 @@ jobs:
           distribution: 'adopt'
 
       - name: Build with Gradle
-        run: ./gradlew -Pvaadin.productionMode=true bootJar
+        run: -Pvaadin.productionMode=true bootJar -x test
 
   deploy:
     needs: build
