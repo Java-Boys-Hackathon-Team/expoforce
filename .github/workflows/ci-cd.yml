@@ -39,7 +39,7 @@ jobs:
       - name: Deploy to Server
         uses: appleboy/ssh-action@master
         with:
-          host: kuramshin-dev.ru
+          host: javaboys.ru
           username: ubuntu
           port: 50151
           key: ${{ secrets.SSH_PRIVATE_KEY }}
